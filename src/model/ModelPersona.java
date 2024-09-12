@@ -55,5 +55,8 @@ public class ModelPersona {
 	public void setEta(int eta) {
 		this.eta = eta;
 	}
-
+	
+	public String toRow() {
+		return this.nome + ";" + this.cognome + ";" + this.indirizzo + ";" + this.telefono + ";" + this.eta;
+	}
 }
