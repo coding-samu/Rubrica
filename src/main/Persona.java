@@ -1,6 +1,6 @@
-package model;
+package main;
 
-public class ModelPersona {
+public class Persona {
 	
 	private String nome;
 	private String cognome;
@@ -8,7 +8,7 @@ public class ModelPersona {
 	private String telefono;
 	private int eta;
 	
-	public ModelPersona(String nome, String cognome, String indirizzo, String telefono, int eta) {
+	public Persona(String nome, String cognome, String indirizzo, String telefono, int eta) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.indirizzo = indirizzo;
@@ -56,7 +56,8 @@ public class ModelPersona {
 		this.eta = eta;
 	}
 	
-	public String toRow() {
+	@Override
+	public String toString() {
 		return this.nome + ";" + this.cognome + ";" + this.indirizzo + ";" + this.telefono + ";" + this.eta;
 	}
 }
