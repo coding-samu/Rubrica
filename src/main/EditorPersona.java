@@ -10,9 +10,9 @@ public class EditorPersona extends JDialog {
 	private JTextField txtNome, txtCognome, txtIndirizzo, txtTelefono, txtEta;
     private Rubrica rubrica;
     private Persona persona;
-    private Main parent;
+    private RubricaGUI parent;
 
-    public EditorPersona(Main parent, Persona persona, Rubrica rubrica) {
+    public EditorPersona(RubricaGUI parent, Persona persona, Rubrica rubrica) {
         this.persona = persona;
         this.rubrica = rubrica;
         this.parent = parent;

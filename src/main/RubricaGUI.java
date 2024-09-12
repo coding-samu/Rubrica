@@ -6,13 +6,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main extends JFrame {
+public class RubricaGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Rubrica rubrica;
     private JTable tabellaPersone;
     private DefaultTableModel modelloTabella;
 
-    public Main() {
+    public RubricaGUI() {
         rubrica = new Rubrica();
         rubrica.caricaDaFile("informazioni.txt");
 
@@ -103,6 +103,6 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Main();
+        new RubricaGUI();
     }
 }
