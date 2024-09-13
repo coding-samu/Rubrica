@@ -7,6 +7,16 @@ public class Persona {
 	private String indirizzo;
 	private String telefono;
 	private int eta;
+	private int id;
+	
+	public Persona(String nome, String cognome, String indirizzo, String telefono, int eta, int id) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.indirizzo = indirizzo;
+		this.telefono = telefono;
+		this.eta = eta;
+		this.id = id;
+	}
 	
 	public Persona(String nome, String cognome, String indirizzo, String telefono, int eta) {
 		this.nome = nome;
@@ -36,6 +46,10 @@ public class Persona {
 		return this.eta;
 	}
 	
+	public int getId() {
+		return this.id;
+	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -54,6 +68,10 @@ public class Persona {
 	
 	public void setEta(int eta) {
 		this.eta = eta;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	@Override

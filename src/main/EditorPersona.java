@@ -76,24 +76,36 @@ public class EditorPersona extends JDialog {
     }
 
     private void salvaPersona() {
-        String nome = txtNome.getText();
-        String cognome = txtCognome.getText();
-        String indirizzo = txtIndirizzo.getText();
-        String telefono = txtTelefono.getText();
-        int eta = Integer.parseInt(txtEta.getText());
-
-        if (persona == null) {
-            persona = new Persona(nome, cognome, indirizzo, telefono, eta);
-            rubrica.aggiungiPersona(persona);
-        } else {
-            persona.setNome(nome);
-            persona.setCognome(cognome);
-            persona.setIndirizzo(indirizzo);
-            persona.setTelefono(telefono);
-            persona.setEta(eta);
-        }
-
-        parent.aggiornaDati();
-        dispose();
+    	try {
+	        String nome = txtNome.getText();
+	        String cognome = txtCognome.getText();
+	        String indirizzo = txtIndirizzo.getText();
+	        String telefono = txtTelefono.getText();
+	        int eta = Integer.parseInt(txtEta.getText());
+	        if (eta < 0) throw new IndexOutOfBoundsException();
+	        if (persona == null) {
+	            persona = new Persona(nome, cognome, indirizzo, telefono, eta);
+	            rubrica.aggiungiPersona(persona);
+	        } else {
+	            persona.setNome(nome);
+	            persona.setCognome(cognome);
+	            persona.setIndirizzo(indirizzo);
+	            persona.setTelefono(telefono);
+	            persona.setEta(eta);
+	            rubrica.aggiornaPersona(persona);
+	        }
+	
+	        parent.aggiornaDati();
+	        dispose();
+    	}
+    	catch (NumberFormatException e) {
+    		JOptionPane.showMessageDialog(null, "L'età deve essere un intero.");
+    	}
+    	catch (IndexOutOfBoundsException e) {
+    		JOptionPane.showMessageDialog(null, "L'età non può essere negativa.");
+    	}
+    	catch (Exception e) {
+    		JOptionPane.showMessageDialog(null, "Si è verificato un errore.");
+    	}
     }
 }

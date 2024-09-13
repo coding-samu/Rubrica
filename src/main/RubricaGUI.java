@@ -13,8 +13,7 @@ public class RubricaGUI extends JFrame {
     private DefaultTableModel modelloTabella;
 
     public RubricaGUI() {
-        rubrica = new Rubrica();
-        rubrica.caricaDaFile("informazioni.txt");
+    	rubrica = new Rubrica();
 
         setTitle("Rubrica");
         setSize(600, 400);
@@ -65,9 +64,8 @@ public class RubricaGUI extends JFrame {
                     Persona p = rubrica.getPersone().get(selectedRow);
                     int conferma = JOptionPane.showConfirmDialog(null, "Eliminare la persona " + p.getNome() + " " + p.getCognome() + "?");
                     if (conferma == JOptionPane.YES_OPTION) {
-                        rubrica.rimuoviPersona(selectedRow);
-                        aggiornaTabella();
-                        rubrica.salvaSuFile("informazioni.txt");
+                        rubrica.rimuoviPersona(p.getId());
+                        aggiornaDati();
                     }
                 }
             }
@@ -98,8 +96,8 @@ public class RubricaGUI extends JFrame {
     }
 
     public void aggiornaDati() {
+        rubrica.caricaDaDatabase();
         aggiornaTabella();
-        rubrica.salvaSuFile("informazioni.txt");
     }
 
     public static void main(String[] args) {
