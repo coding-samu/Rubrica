@@ -64,7 +64,7 @@ public class RubricaGUI extends JFrame {
                     Persona p = rubrica.getPersone().get(selectedRow);
                     int conferma = JOptionPane.showConfirmDialog(null, "Eliminare la persona " + p.getNome() + " " + p.getCognome() + "?");
                     if (conferma == JOptionPane.YES_OPTION) {
-                        rubrica.rimuoviPersona(p.getId());
+                        rubrica.rimuoviPersona(p);
                         aggiornaDati();
                     }
                 }

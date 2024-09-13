@@ -101,7 +101,7 @@ public class Rubrica {
 
     // Metodo per aggiungere una persona al database
     public void aggiungiPersona(Persona p) {
-        String query = "INSERT INTO persone (nome, cognome, indirizzo, telefono, eta) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO persona (nome, cognome, indirizzo, telefono, eta) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, p.getNome());
             ps.setString(2, p.getCognome());
@@ -116,12 +116,12 @@ public class Rubrica {
     }
 
     // Metodo per rimuovere una persona dal database
-    public void rimuoviPersona(int id) {
-        String query = "DELETE FROM persone WHERE id = ?";
+    public void rimuoviPersona(Persona p) {
+        String query = "DELETE FROM persona WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setInt(1, id);
+            ps.setInt(1, p.getId());
             ps.executeUpdate();
-            System.out.println("Persona id " + Integer.toString(id) + " rimossa dal database.");
+            System.out.println(p.getNome() + " " + p.getCognome() + " rimosso dal database.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,7 +129,7 @@ public class Rubrica {
     
     // Metodo per aggiornare una persona nel database
     public void aggiornaPersona(Persona p) {
-        String query = "UPDATE persone SET nome = ?, cognome = ?, indirizzo = ?, telefono = ?, eta = ? WHERE id = ?";
+        String query = "UPDATE persona SET nome = ?, cognome = ?, indirizzo = ?, telefono = ?, eta = ? WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, p.getNome());
             ps.setString(2, p.getCognome());
@@ -146,7 +146,7 @@ public class Rubrica {
     // Metodo per caricare le persone dal database
     public void caricaDaDatabase() {
         persone.clear();  // Pulisce la lista prima di caricare dal database
-        String query = "SELECT * FROM persone";
+        String query = "SELECT * FROM persona";
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 Persona p = new Persona(
